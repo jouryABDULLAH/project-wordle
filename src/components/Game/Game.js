@@ -22,7 +22,7 @@ function Game() {
   return (
   <>
   <div className="game-wrapper">
-   <GuessResults Guesses={guessList}/>
+   <GuessResults guesses={guessList}/>
    <GuessInput handleSubmit={handleSubmitedGuess}/>
 
     {/* <div className="happy banner">
