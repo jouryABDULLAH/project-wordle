@@ -1,6 +1,6 @@
 import React from 'react';
 
-function GuessInput({handleSubmit, gameStatus, numOfGuesses}) {
+function GuessInput({handleSubmit, gameStatus}) {
 
   const [input, setInput] = React.useState("");
   return (
@@ -19,7 +19,7 @@ function GuessInput({handleSubmit, gameStatus, numOfGuesses}) {
     value={input}
     pattern="\w{5,5}"
     title='5 letter word'
-    disabled={gameStatus === 'win' || numOfGuesses === 6? true : false}
+    disabled={gameStatus !='running'}
     onChange={(e)=>{
       const nextInput = e.target.value;
       setInput(nextInput.toUpperCase());
