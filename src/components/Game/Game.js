@@ -13,7 +13,7 @@ console.info({ answer });
 
 function Game() {
   const [guessList, setGuessList] = React.useState([]);
-  const [gameStatus, setGameStatus] = React.useState(undefined); // Over, Win
+  const [gameStatus, setGameStatus] = React.useState(undefined); 
 
   function handleSubmitedGuess(input){
     const nextGuessList = [...guessList, input];
@@ -27,12 +27,12 @@ function Game() {
   } else if(guessList.length === 6){
     banner = <div class="sad banner"> <p>Sorry, the correct answer is <strong>{answer}</strong>.</p> </div> ;
   }
-  
+
   return (
   <>
   <div className="game-wrapper">
    <GuessResults guesses={guessList} answer={answer} setGameStatus={setGameStatus}/>
-   <GuessInput handleSubmit={handleSubmitedGuess}/>
+   <GuessInput handleSubmit={handleSubmitedGuess} gameStatus={gameStatus} numOfGuesses={guessList.length}/>
 
   
 
