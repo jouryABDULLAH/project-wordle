@@ -1,3 +1,5 @@
+
+// TODO: create banner component, restart button, add a keyboard 
 import React from 'react';
 
 import { sample } from '../../utils';
