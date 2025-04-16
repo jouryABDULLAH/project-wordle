@@ -13,24 +13,31 @@ console.info({ answer });
 
 function Game() {
   const [guessList, setGuessList] = React.useState([]);
+  const [gameStatus, setGameStatus] = React.useState(undefined); // Over, Win
 
   function handleSubmitedGuess(input){
     const nextGuessList = [...guessList, input];
     setGuessList(nextGuessList);
   }
 
+  // let banner = gameStatus==='win'? <div className="happy banner"> <p> <strong>Congratulations!</strong> Got it in <strong>{guessList.length} guesses</strong>. </p> </div> : <div class="sad banner"> <p>Sorry, the correct answer is <strong>{answer}</strong>.</p> </div> ;
+  let banner = "";
+  if(gameStatus==='win'){
+    banner = <div className="happy banner"> <p> <strong>Congratulations!</strong> Got it in <strong>{guessList.length} guesses</strong>. </p> </div> ;
+  } else if(guessList.length === 6){
+    banner = <div class="sad banner"> <p>Sorry, the correct answer is <strong>{answer}</strong>.</p> </div> ;
+  }
+  
   return (
   <>
   <div className="game-wrapper">
-   <GuessResults guesses={guessList} answer={answer}/>
+   <GuessResults guesses={guessList} answer={answer} setGameStatus={setGameStatus}/>
    <GuessInput handleSubmit={handleSubmitedGuess}/>
 
-    {/* <div className="happy banner">
-        <p>
-          <strong>Congratulations!</strong> Got it in
-          <strong>3 guesses</strong>.
-        </p>
-    </div> */}
+  
+
+    {banner}
+
   </div>
   </>
   );

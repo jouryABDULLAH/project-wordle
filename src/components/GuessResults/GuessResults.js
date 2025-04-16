@@ -5,17 +5,16 @@ import Guess from '../Guess';
 import { checkGuess } from '../../game-helpers.js'
 
 
-function GuessResults({guesses, answer}) {
+function GuessResults({guesses, answer, setGameStatus}) {
   console.log('answer in GR: ', answer);
   console.log('guesses in GR: ', guesses);
+
   return (
   <>
     <div className="guess-results">
-      {range(NUM_OF_GUESSES_ALLOWED).map((index)=> <Guess ansewr={answer} key={index} value={checkGuess(guesses[index], answer)}></Guess>)}
+      {range(NUM_OF_GUESSES_ALLOWED).map((index)=> <Guess ansewr={answer} key={index} value={checkGuess(guesses[index], answer)} setGameStatus={setGameStatus} count={index} ></Guess>)}
     </div>
-    {/* <div className="guess-results">
-      {guesses.map((guess, index)=> <p key={index} className="guess">{[...guess].map((char)=> <span className='cell'>{char}</span>)}</p>)}
-    </div> */}
+
   </>
   );
 }
